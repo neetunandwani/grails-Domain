@@ -10,6 +10,8 @@ class Author {
     Date dob
     Integer age
 
+    static hasOne = [book: Book]
+
     static transients = ['name', 'age']
 
     static constraints = {

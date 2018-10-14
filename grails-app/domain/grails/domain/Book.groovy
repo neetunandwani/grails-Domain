@@ -8,6 +8,8 @@ class Book {
     Date dateCreated
     Integer noOfPages
 
+    static belongsTo = [author: Author]
+
     static constraints = {
         noOfPages max: 100
         title maxSize: 5
