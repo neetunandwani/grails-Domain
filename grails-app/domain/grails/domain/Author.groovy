@@ -10,13 +10,13 @@ class Author {
     Date dob
     Integer age
 
-    static hasOne = [book: Book]
+//    static hasMany = [books: Book]
 
     static transients = ['name', 'age']
 
     static constraints = {
         address type: 'text', blank: false
-        email email: true
+        email email: true, unique: true
         firstName bindable: false
         lastName bindable: false
         wiki url: true

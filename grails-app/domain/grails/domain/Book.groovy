@@ -8,11 +8,12 @@ class Book {
     Date dateCreated
     Integer noOfPages
 
-    static belongsTo = [author: Author]
+//    static hasMany = [authors: Author]
+//    static belongsTo = Author
 
     static constraints = {
         noOfPages max: 100
-        title maxSize: 5
+        title maxSize: 10, unique: true
     }
 
     static mapping = {
