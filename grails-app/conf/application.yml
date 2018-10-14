@@ -124,3 +124,9 @@ grails:
 endpoints:
     jmx:
         unique-names: true
+
+
+---
+grails:
+    gorm:
+        failOnError: true
