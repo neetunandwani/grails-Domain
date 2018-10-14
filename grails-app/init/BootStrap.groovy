@@ -96,7 +96,7 @@ class BootStrap {
         company.save()
         company.delete()
         //cascade delete wont work
-        employee.delete()
+//        employee.delete()
     }
 
     static void hasOneMappingBidirectional() {
