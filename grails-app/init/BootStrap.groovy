@@ -15,9 +15,11 @@ class BootStrap {
             email: "neetu.nandwani@tothenew.com",
             wiki: "http://www.google.com",
             name: "neetu nandwani",
-            address: "sector 127, noida")
-
+            address: "sector 127, noida", dob: new Date("11-May-1997"))
         author.save(failOnError: true)
+
+        println("Book: ${book}")
+        println("Author: ${author}")
     }
     def destroy = {
     }

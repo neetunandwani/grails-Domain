@@ -1,6 +1,7 @@
 package grails.domain
 
 import grails.test.mixin.TestFor
+import grails.test.mixin.domain.DomainClassUnitTestMixin
 import spock.lang.Specification
 
 /**
@@ -9,14 +10,37 @@ import spock.lang.Specification
 @TestFor(Author)
 class AuthorSpec extends Specification {
 
-    def setup() {
+    void 'test address cannot be null or blank'() {
+        when:
+        Author author = new Author()
+
+        then:
+        !author.validate(['address'])
+        author.errors['address'].code == 'nullable'
+
+        when:
+        author.address = ""
+
+        then:
+        !author.validate(['address'])
+        author.errors['address'].code == 'blank'
     }
 
-    def cleanup() {
+    void 'test email not valid'() {
+        when:
+        Author author = new Author(email: "ab")
+
+        then:
+        !author.validate(['email'])
+        author.errors['email'].code == 'email.invalid'
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void 'test age custom validator'() {
+        when:
+        Author author = new Author(dob: new Date("11-Feb-2016"))
+
+        then:
+        !author.validate(['age'])
+        author.errors['age'].code == 'validator.invalid'
     }
 }
